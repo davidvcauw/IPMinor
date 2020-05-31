@@ -1,0 +1,17 @@
+<nav>
+    <ul>
+        <li sec:authorize="isAuthenticated()"><a href="/tasks" th:text="#{tasks}"></a></li>
+        <li sec:authorize="hasAuthority('ADMIN')"><a href="/tasks/new" th:text="#{createTasks}"></a></li>
+
+
+        <li th:if="${#httpServletRequest.remoteUser != null}" >
+            <form th:action="@{/logout}" method="post">
+                <div>
+                    <label for="logout" th:text="#{welcome} +' ' + ${#httpServletRequest.remoteUser}"></label>
+                    <input type="submit" id="logout" th:value="#{signOut}"/>
+                </div>
+            </form>
+        </li>
+
+    </ul>
+</nav>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Individual Task</title>
+</head>
+<body>
+<div th:include="navigate.html"></div>
+
+<div th:include="lang.html"></div>
+<h2  th:text="#{individualTask}"></h2>
+<p th:if="${task == null}" th:text="#{taskNotFound}">
+    <div   ></div>
+</p>
+<div th:if="${task != null}">
+    <p><span th:text="#{title}"></span> <span th:text="${task.title}"></span></p>
+    <p><span th:text="#{description}"></span> <span th:text="${task.description}"></span></p>
+    <p><span th:text="#{dueDate}"></span> <span th:text="${task.date}"></span></p>
+</div>
+<div th:if="${subtasks != null}">
+    <div th:each="subtask: ${subtasks}">
+        <h4 th:text="${subtask.title}"/>
+        <p>
+        <span th:text="${subtask.description}"/>
+        </p>
+    </div>
+</div>
+
+
+<div th:if="${task != null}">
+    <a th:href="@{'/tasks/edit/' + ${idnr}}"  th:text="#{editTask}"></a>
+    <a th:href="@{'/tasks/' + ${idnr} + '/sub/create'}" th:text="#{addSubtask}"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title  th:text="#{makeNewTask}"></title>
+</head>
+<body>
+<div th:include="navigate.html"></div>
+<div th:include="lang.html"></div>
+
+<h2 th:text="#{makeNewTask}"></h2>
+<form th:method="post" th:action="@{/tasks/new}" >
+    <div>
+        <label for="title" th:text="#{name}"></label><br>
+        <input name="title" id="title" type="text"/>
+    </div>
+    <div>
+        <label for="description" th:text="#{description}"></label><br>
+        <input name="description" id="description" type="text"/>
+    </div>
+    <div>
+        <label for="date" th:text="#{date}"></label><br>
+        <input name="date" id="date" type="datetime-local"/>
+    </div>
+    <div>
+        <input type="submit" th:value="#{submit}">
+    </div>
+</form>
+</body>
+</html>

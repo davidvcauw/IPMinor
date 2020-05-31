@@ -1,0 +1,20 @@
+<div>
+    <label for="locales" th:text="#{chooseLang}"/>
+    <select id="locales">
+        <option value=""></option>
+        <option value="en" th:text="#{lang.en}"></option>
+        <option value="nl" th:text="#{lang.nl}"></option>
+    </select>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var lang = $('#locales').val();
+                if (lang != ''){
+                    window.location.replace(window.location.pathname + '?lang=' + lang);
+                }
+            });
+        });
+    </script>
+</div>
